@@ -1,0 +1,1974 @@
+{
+  "custom": {},
+  "params": {
+    "kpi": {}
+  },
+  "propConfig": {
+    "params.kpi": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 1024,
+      "height": 544
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "",
+        "overflow": "hidden",
+        "gap": "0.8571rem",
+        "padding": "0.8571rem 1.1429rem 2rem"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "Hero"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "style": {
+            "classes": "weather-card",
+            "overflow": "hidden",
+            "gap": "1.4286rem",
+            "padding": "0.8571rem 1.4286rem"
+          },
+          "alignItems": "center"
+        },
+        "children": [
+          {
+            "type": "ia.display.icon",
+            "meta": {
+              "name": "ConditionIcon"
+            },
+            "position": {
+              "basis": "4.5714rem",
+              "shrink": 0
+            },
+            "props": {
+              "path": "material/cloud",
+              "style": {
+                "classes": "weather-icon",
+                "height": "4.5714rem",
+                "width": "4.5714rem"
+              }
+            },
+            "propConfig": {
+              "props.path": {
+                "binding": {
+                  "type": "property",
+                  "config": {
+                    "path": "view.params.kpi.icon"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "Readout"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "style": {
+                "classes": "",
+                "overflow": "visible"
+              },
+              "alignItems": "flex-start"
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Temp"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "kpi-value",
+                    "fontSize": "3.5rem",
+                    "lineHeight": "1"
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.kpi.temp"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Unit"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "kpi-unit",
+                    "fontSize": "var(--fs-lg)"
+                  },
+                  "text": "°F"
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "Summary"
+            },
+            "position": {
+              "grow": 1,
+              "shrink": 1,
+              "basis": "0px"
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "classes": "",
+                "overflow": "hidden",
+                "gap": "0.2857rem",
+                "minWidth": "0px"
+              },
+              "justify": "center"
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Condition"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-h2",
+                    "whiteSpace": "nowrap",
+                    "overflow": "hidden",
+                    "textOverflow": "ellipsis"
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.kpi.condition"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "HiLo"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-label"
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.kpi.hiLo"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "RowA"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 1,
+          "basis": "0px"
+        },
+        "props": {
+          "direction": "row",
+          "style": {
+            "classes": "",
+            "overflow": "hidden",
+            "gap": "0.8571rem"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "FeelsLike"
+            },
+            "position": {
+              "basis": "0px",
+              "grow": 1,
+              "shrink": 1
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "classes": "weather-card",
+                "overflow": "hidden",
+                "gap": "0.4286rem",
+                "padding": "0.8571rem 1rem",
+                "minWidth": "0px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "Header"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "row",
+                  "style": {
+                    "classes": "",
+                    "overflow": "hidden",
+                    "gap": "0.4286rem"
+                  },
+                  "alignItems": "center"
+                },
+                "children": [
+                  {
+                    "type": "ia.display.icon",
+                    "meta": {
+                      "name": "Icon"
+                    },
+                    "position": {
+                      "basis": "1.1429rem",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "path": "material/wb_sunny",
+                      "style": {
+                        "classes": "weather-icon",
+                        "height": "1.1429rem",
+                        "width": "1.1429rem"
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "Title"
+                    },
+                    "position": {
+                      "grow": 1,
+                      "shrink": 1,
+                      "basis": "0px"
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "text-label",
+                        "whiteSpace": "nowrap",
+                        "overflow": "hidden",
+                        "textOverflow": "ellipsis"
+                      },
+                      "text": "Feels like"
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "Badge"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "",
+                        "whiteSpace": "nowrap"
+                      }
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.params.kpi.feelsBadge"
+                          }
+                        }
+                      },
+                      "props.style.classes": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.params.kpi.feelsBadgeClass"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "Readout"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "row",
+                  "style": {
+                    "classes": "",
+                    "overflow": "hidden",
+                    "gap": "0.1429rem"
+                  },
+                  "alignItems": "baseline",
+                  "wrap": "wrap"
+                },
+                "children": [
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "Value"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "kpi-value",
+                        "fontSize": "2.6rem",
+                        "lineHeight": "1.1"
+                      }
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.params.kpi.feels"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "Unit"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "kpi-unit"
+                      },
+                      "text": "°F"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Detail"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-muted",
+                    "fontSize": "var(--fs-sm)",
+                    "lineHeight": "1.3"
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.kpi.feelsDetail"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "Humidity"
+            },
+            "position": {
+              "basis": "0px",
+              "grow": 1,
+              "shrink": 1
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "classes": "weather-card",
+                "overflow": "hidden",
+                "gap": "0.4286rem",
+                "padding": "0.8571rem 1rem",
+                "minWidth": "0px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "Header"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "row",
+                  "style": {
+                    "classes": "",
+                    "overflow": "hidden",
+                    "gap": "0.4286rem"
+                  },
+                  "alignItems": "center"
+                },
+                "children": [
+                  {
+                    "type": "ia.display.icon",
+                    "meta": {
+                      "name": "Icon"
+                    },
+                    "position": {
+                      "basis": "1.1429rem",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "path": "material/opacity",
+                      "style": {
+                        "classes": "weather-icon",
+                        "height": "1.1429rem",
+                        "width": "1.1429rem"
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "Title"
+                    },
+                    "position": {
+                      "grow": 1,
+                      "shrink": 1,
+                      "basis": "0px"
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "text-label",
+                        "whiteSpace": "nowrap",
+                        "overflow": "hidden",
+                        "textOverflow": "ellipsis"
+                      },
+                      "text": "Humidity"
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "Badge"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "",
+                        "whiteSpace": "nowrap"
+                      }
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.params.kpi.humidityBadge"
+                          }
+                        }
+                      },
+                      "props.style.classes": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.params.kpi.humidityBadgeClass"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "Readout"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "row",
+                  "style": {
+                    "classes": "",
+                    "overflow": "hidden",
+                    "gap": "0.1429rem"
+                  },
+                  "alignItems": "baseline",
+                  "wrap": "wrap"
+                },
+                "children": [
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "Value"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "kpi-value",
+                        "fontSize": "2.6rem",
+                        "lineHeight": "1.1"
+                      }
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.params.kpi.humidity"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "Unit"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "kpi-unit"
+                      },
+                      "text": "%"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Detail"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-muted",
+                    "fontSize": "var(--fs-sm)",
+                    "lineHeight": "1.3"
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.kpi.humidityDetail"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "Track"
+                },
+                "position": {
+                  "basis": "0.2857rem",
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "row",
+                  "style": {
+                    "classes": "",
+                    "overflow": "hidden",
+                    "background": "var(--bg-surface-2)",
+                    "borderRadius": "0.1429rem",
+                    "marginTop": "auto"
+                  }
+                },
+                "children": [
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "Fill"
+                    },
+                    "position": {
+                      "basis": "0%",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "row",
+                      "style": {
+                        "classes": "weather-bar",
+                        "overflow": "hidden"
+                      }
+                    },
+                    "children": [],
+                    "propConfig": {
+                      "position.basis": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.params.kpi.humidityPct"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "Wind"
+            },
+            "position": {
+              "basis": "0px",
+              "grow": 1,
+              "shrink": 1
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "classes": "weather-card",
+                "overflow": "hidden",
+                "gap": "0.4286rem",
+                "padding": "0.8571rem 1rem",
+                "minWidth": "0px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "Header"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "row",
+                  "style": {
+                    "classes": "",
+                    "overflow": "hidden",
+                    "gap": "0.4286rem"
+                  },
+                  "alignItems": "center"
+                },
+                "children": [
+                  {
+                    "type": "ia.display.icon",
+                    "meta": {
+                      "name": "Icon"
+                    },
+                    "position": {
+                      "basis": "1.1429rem",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "path": "material/navigation",
+                      "style": {
+                        "classes": "weather-icon",
+                        "height": "1.1429rem",
+                        "width": "1.1429rem"
+                      }
+                    },
+                    "propConfig": {
+                      "props.style.transform": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "\"rotate(\" + {view.params.kpi.windRotation} + \"deg)\""
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "Title"
+                    },
+                    "position": {
+                      "grow": 1,
+                      "shrink": 1,
+                      "basis": "0px"
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "text-label",
+                        "whiteSpace": "nowrap",
+                        "overflow": "hidden",
+                        "textOverflow": "ellipsis"
+                      },
+                      "text": "Wind"
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "Badge"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "",
+                        "whiteSpace": "nowrap"
+                      }
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.params.kpi.windBadge"
+                          }
+                        }
+                      },
+                      "props.style.classes": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.params.kpi.windBadgeClass"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "Readout"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "row",
+                  "style": {
+                    "classes": "",
+                    "overflow": "hidden",
+                    "gap": "0.1429rem"
+                  },
+                  "alignItems": "baseline",
+                  "wrap": "wrap"
+                },
+                "children": [
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "Value"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "kpi-value",
+                        "fontSize": "2.6rem",
+                        "lineHeight": "1.1"
+                      }
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.params.kpi.wind"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "Unit"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "kpi-unit"
+                      },
+                      "text": "mph"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Detail"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-muted",
+                    "fontSize": "var(--fs-sm)",
+                    "lineHeight": "1.3"
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.kpi.windDetail"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "Pressure"
+            },
+            "position": {
+              "basis": "0px",
+              "grow": 1,
+              "shrink": 1
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "classes": "weather-card",
+                "overflow": "hidden",
+                "gap": "0.4286rem",
+                "padding": "0.8571rem 1rem",
+                "minWidth": "0px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "Header"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "row",
+                  "style": {
+                    "classes": "",
+                    "overflow": "hidden",
+                    "gap": "0.4286rem"
+                  },
+                  "alignItems": "center"
+                },
+                "children": [
+                  {
+                    "type": "ia.display.icon",
+                    "meta": {
+                      "name": "Icon"
+                    },
+                    "position": {
+                      "basis": "1.1429rem",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "path": "material/speed",
+                      "style": {
+                        "classes": "weather-icon",
+                        "height": "1.1429rem",
+                        "width": "1.1429rem"
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "Title"
+                    },
+                    "position": {
+                      "grow": 1,
+                      "shrink": 1,
+                      "basis": "0px"
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "text-label",
+                        "whiteSpace": "nowrap",
+                        "overflow": "hidden",
+                        "textOverflow": "ellipsis"
+                      },
+                      "text": "Pressure"
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "Badge"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "",
+                        "whiteSpace": "nowrap"
+                      }
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.params.kpi.pressureBadge"
+                          }
+                        }
+                      },
+                      "props.style.classes": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.params.kpi.pressureBadgeClass"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "Readout"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "row",
+                  "style": {
+                    "classes": "",
+                    "overflow": "hidden",
+                    "gap": "0.1429rem"
+                  },
+                  "alignItems": "baseline",
+                  "wrap": "wrap"
+                },
+                "children": [
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "Value"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "kpi-value",
+                        "fontSize": "2.6rem",
+                        "lineHeight": "1.1"
+                      }
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.params.kpi.pressure"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "Unit"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "kpi-unit"
+                      },
+                      "text": "inHg"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Detail"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-muted",
+                    "fontSize": "var(--fs-sm)",
+                    "lineHeight": "1.3"
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.kpi.pressureDetail"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "RowB"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 1,
+          "basis": "0px"
+        },
+        "props": {
+          "direction": "row",
+          "style": {
+            "classes": "",
+            "overflow": "hidden",
+            "gap": "0.8571rem"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "Visibility"
+            },
+            "position": {
+              "basis": "0px",
+              "grow": 1,
+              "shrink": 1
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "classes": "weather-card",
+                "overflow": "hidden",
+                "gap": "0.4286rem",
+                "padding": "0.8571rem 1rem",
+                "minWidth": "0px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "Header"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "row",
+                  "style": {
+                    "classes": "",
+                    "overflow": "hidden",
+                    "gap": "0.4286rem"
+                  },
+                  "alignItems": "center"
+                },
+                "children": [
+                  {
+                    "type": "ia.display.icon",
+                    "meta": {
+                      "name": "Icon"
+                    },
+                    "position": {
+                      "basis": "1.1429rem",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "path": "material/visibility",
+                      "style": {
+                        "classes": "weather-icon",
+                        "height": "1.1429rem",
+                        "width": "1.1429rem"
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "Title"
+                    },
+                    "position": {
+                      "grow": 1,
+                      "shrink": 1,
+                      "basis": "0px"
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "text-label",
+                        "whiteSpace": "nowrap",
+                        "overflow": "hidden",
+                        "textOverflow": "ellipsis"
+                      },
+                      "text": "Visibility"
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "Badge"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "",
+                        "whiteSpace": "nowrap"
+                      }
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.params.kpi.visibilityBadge"
+                          }
+                        }
+                      },
+                      "props.style.classes": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.params.kpi.visibilityBadgeClass"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "Readout"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "row",
+                  "style": {
+                    "classes": "",
+                    "overflow": "hidden",
+                    "gap": "0.1429rem"
+                  },
+                  "alignItems": "baseline",
+                  "wrap": "wrap"
+                },
+                "children": [
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "Value"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "kpi-value",
+                        "fontSize": "2.6rem",
+                        "lineHeight": "1.1"
+                      }
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.params.kpi.visibility"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "Unit"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "kpi-unit"
+                      },
+                      "text": "mi"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Detail"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-muted",
+                    "fontSize": "var(--fs-sm)",
+                    "lineHeight": "1.3"
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.kpi.visibilityDetail"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "CloudCover"
+            },
+            "position": {
+              "basis": "0px",
+              "grow": 1,
+              "shrink": 1
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "classes": "weather-card",
+                "overflow": "hidden",
+                "gap": "0.4286rem",
+                "padding": "0.8571rem 1rem",
+                "minWidth": "0px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "Header"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "row",
+                  "style": {
+                    "classes": "",
+                    "overflow": "hidden",
+                    "gap": "0.4286rem"
+                  },
+                  "alignItems": "center"
+                },
+                "children": [
+                  {
+                    "type": "ia.display.icon",
+                    "meta": {
+                      "name": "Icon"
+                    },
+                    "position": {
+                      "basis": "1.1429rem",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "path": "material/filter_drama",
+                      "style": {
+                        "classes": "weather-icon",
+                        "height": "1.1429rem",
+                        "width": "1.1429rem"
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "Title"
+                    },
+                    "position": {
+                      "grow": 1,
+                      "shrink": 1,
+                      "basis": "0px"
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "text-label",
+                        "whiteSpace": "nowrap",
+                        "overflow": "hidden",
+                        "textOverflow": "ellipsis"
+                      },
+                      "text": "Cloud cover"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "Readout"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "row",
+                  "style": {
+                    "classes": "",
+                    "overflow": "hidden",
+                    "gap": "0.1429rem"
+                  },
+                  "alignItems": "baseline",
+                  "wrap": "wrap"
+                },
+                "children": [
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "Value"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "kpi-value",
+                        "fontSize": "2.6rem",
+                        "lineHeight": "1.1"
+                      }
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.params.kpi.clouds"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "Unit"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "kpi-unit"
+                      },
+                      "text": "%"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Detail"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-muted",
+                    "fontSize": "var(--fs-sm)",
+                    "lineHeight": "1.3"
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.kpi.cloudsDetail"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "Track"
+                },
+                "position": {
+                  "basis": "0.2857rem",
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "row",
+                  "style": {
+                    "classes": "",
+                    "overflow": "hidden",
+                    "background": "var(--bg-surface-2)",
+                    "borderRadius": "0.1429rem",
+                    "marginTop": "auto"
+                  }
+                },
+                "children": [
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "Fill"
+                    },
+                    "position": {
+                      "basis": "0%",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "row",
+                      "style": {
+                        "classes": "weather-bar",
+                        "overflow": "hidden"
+                      }
+                    },
+                    "children": [],
+                    "propConfig": {
+                      "position.basis": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.params.kpi.cloudsPct"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "Precipitation"
+            },
+            "position": {
+              "basis": "0px",
+              "grow": 1,
+              "shrink": 1
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "classes": "weather-card",
+                "overflow": "hidden",
+                "gap": "0.4286rem",
+                "padding": "0.8571rem 1rem",
+                "minWidth": "0px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "Header"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "row",
+                  "style": {
+                    "classes": "",
+                    "overflow": "hidden",
+                    "gap": "0.4286rem"
+                  },
+                  "alignItems": "center"
+                },
+                "children": [
+                  {
+                    "type": "ia.display.icon",
+                    "meta": {
+                      "name": "Icon"
+                    },
+                    "position": {
+                      "basis": "1.1429rem",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "path": "material/umbrella",
+                      "style": {
+                        "classes": "weather-icon",
+                        "height": "1.1429rem",
+                        "width": "1.1429rem"
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "Title"
+                    },
+                    "position": {
+                      "grow": 1,
+                      "shrink": 1,
+                      "basis": "0px"
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "text-label",
+                        "whiteSpace": "nowrap",
+                        "overflow": "hidden",
+                        "textOverflow": "ellipsis"
+                      },
+                      "text": "Precipitation"
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "Badge"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "",
+                        "whiteSpace": "nowrap"
+                      }
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.params.kpi.precipBadge"
+                          }
+                        }
+                      },
+                      "props.style.classes": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.params.kpi.precipBadgeClass"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "Readout"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "row",
+                  "style": {
+                    "classes": "",
+                    "overflow": "hidden",
+                    "gap": "0.1429rem"
+                  },
+                  "alignItems": "baseline",
+                  "wrap": "wrap"
+                },
+                "children": [
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "Value"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "kpi-value",
+                        "fontSize": "2.6rem",
+                        "lineHeight": "1.1"
+                      }
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.params.kpi.precip"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "Unit"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "kpi-unit"
+                      },
+                      "text": "in"
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.params.kpi.precipUnit"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Detail"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-muted",
+                    "fontSize": "var(--fs-sm)",
+                    "lineHeight": "1.3"
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.kpi.precipDetail"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "Sun"
+            },
+            "position": {
+              "basis": "0px",
+              "grow": 1,
+              "shrink": 1
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "classes": "weather-card",
+                "overflow": "hidden",
+                "gap": "0.4286rem",
+                "padding": "0.8571rem 1rem",
+                "minWidth": "0px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "Header"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "row",
+                  "style": {
+                    "classes": "",
+                    "overflow": "hidden",
+                    "gap": "0.4286rem"
+                  },
+                  "alignItems": "center"
+                },
+                "children": [
+                  {
+                    "type": "ia.display.icon",
+                    "meta": {
+                      "name": "Icon"
+                    },
+                    "position": {
+                      "basis": "1.1429rem",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "path": "material/wb_sunny",
+                      "style": {
+                        "classes": "weather-icon",
+                        "height": "1.1429rem",
+                        "width": "1.1429rem"
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "Title"
+                    },
+                    "position": {
+                      "grow": 1,
+                      "shrink": 1,
+                      "basis": "0px"
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "text-label",
+                        "whiteSpace": "nowrap",
+                        "overflow": "hidden",
+                        "textOverflow": "ellipsis"
+                      },
+                      "text": "Sun"
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "Badge"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "",
+                        "whiteSpace": "nowrap"
+                      }
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.params.kpi.sunBadge"
+                          }
+                        }
+                      },
+                      "props.style.classes": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.params.kpi.sunBadgeClass"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "Readout"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "row",
+                  "style": {
+                    "classes": "",
+                    "overflow": "hidden",
+                    "gap": "0.1429rem"
+                  },
+                  "alignItems": "baseline",
+                  "wrap": "wrap"
+                },
+                "children": [
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "Value"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "kpi-value",
+                        "fontSize": "2.6rem",
+                        "lineHeight": "1.1"
+                      }
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.params.kpi.sunEvent"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "Unit"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "kpi-unit"
+                      },
+                      "text": ""
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.params.kpi.sunEventLabel"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Detail"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-muted",
+                    "fontSize": "var(--fs-sm)",
+                    "lineHeight": "1.3"
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.kpi.sunDetail"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

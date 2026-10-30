@@ -1,0 +1,10 @@
+{
+  "pages": {
+    "/": {
+      "viewPath": "weatherDashboard"
+    }
+  },
+  "sharedDocks": {
+    "cornerPriority": "top-bottom"
+  }
+}

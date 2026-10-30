@@ -1,0 +1,625 @@
+/* Direct stylesheet authoring is an advanced feature. Knowledge of CSS required.*/
+
+/* =====================================================================
+   IGNITION PERSPECTIVE — DARK DASHBOARD STYLESHEET
+   ---------------------------------------------------------------------
+   Install: Designer > Project Browser > Perspective > Styles >
+            right-click > "Enable Advanced Stylesheet" (8.1.22+),
+            then paste this into stylesheet.css.
+
+   Usage:   Perspective prefixes style classes with "psc-".
+            A class written here as .psc-card is applied in the
+            Designer by adding "card" to a component's style.classes.
+
+   Weather: put "weather-<condition>" on a container (e.g. bind
+            style.classes). Everything inside it that uses the
+            --wx-* variables re-colors automatically.
+   ===================================================================== */
+
+
+/* ---------------------------------------------------------------------
+   1. DESIGN TOKENS
+   --------------------------------------------------------------------- */
+:root {
+  /* Surfaces */
+  --bg-app:        #0d1117;
+  --bg-app-2:      #111827;
+  --bg-surface:    #161b22;
+  --bg-surface-2:  #1c232d;
+  --bg-elevated:   #222b37;
+  --bg-hover:      #2a3441;
+
+  /* Borders */
+  --border-subtle: #262f3b;
+  --border-strong: #3a4554;
+
+  /* Text */
+  --text-primary:   #e6edf3;
+  --text-secondary: #9aa7b6;
+  --text-muted:     #6b7787;
+  --text-inverse:   #0d1117;
+
+  /* Brand / interaction */
+  --accent:         #3b82f6;
+  --accent-hover:   #5b9bff;
+  --accent-active:  #2563eb;
+  --accent-soft:    rgba(59, 130, 246, 0.15);
+
+  /* Status */
+  --ok:      #22c55e;
+  --warn:    #f59e0b;
+  --alarm:   #ef4444;
+  --info:    #38bdf8;
+  --offline: #64748b;
+
+  /* Typography */
+  --font-base: "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "Cascadia Mono", Consolas, monospace;
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 1.75rem;
+  --fs-2xl: 2.5rem;
+
+  /* Shape & motion */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.45);
+  --transition: 180ms ease;
+
+  /* Weather defaults (overridden by .psc-weather-* classes) */
+  --wx-accent:   var(--accent);
+  --wx-accent-2: var(--accent-hover);
+  --wx-glow:     rgba(59, 130, 246, 0.25);
+  --wx-bg:       linear-gradient(160deg, #1c232d 0%, #161b22 100%);
+  --wx-text:     var(--text-primary);
+
+  /* Map onto Ignition's built-in theme variables so stock
+     components pick up the dark palette too */
+  --containerRoot:          var(--bg-app);
+  --container:              var(--bg-surface);
+  --neutral-00:             var(--bg-app);
+  --neutral-10:             var(--bg-surface);
+  --neutral-20:             var(--bg-surface-2);
+  --neutral-30:             var(--bg-elevated);
+  --neutral-90:             var(--text-primary);
+  --neutral-100:            #ffffff;
+  --border:                 var(--border-subtle);
+  --label:                  var(--text-primary);
+  --callToAction:           var(--accent);
+  --callToAction--hover:    var(--accent-hover);
+  --callToAction--active:   var(--accent-active);
+}
+
+
+/* ---------------------------------------------------------------------
+   2. BASE / BACKGROUND
+   --------------------------------------------------------------------- */
+html,
+body,
+#app-container {
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  font-family: var(--font-base);
+  font-size: 14px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Apply "app-bg" to your root container for the gradient backdrop */
+.psc-app-bg {
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(59, 130, 246, 0.08), transparent 60%),
+    radial-gradient(900px 500px at 110% 110%, rgba(56, 189, 248, 0.06), transparent 60%),
+    var(--bg-app) !important;
+  color: var(--text-primary);
+}
+
+/* Thin, dark scrollbars */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-app); }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+
+/* ---------------------------------------------------------------------
+   3. TYPOGRAPHY
+   --------------------------------------------------------------------- */
+.psc-text-h1     { font-size: var(--fs-2xl); font-weight: 700; letter-spacing: -0.02em; color: var(--text-primary); }
+.psc-text-h2     { font-size: var(--fs-xl);  font-weight: 600; letter-spacing: -0.01em; color: var(--text-primary); }
+.psc-text-h3     { font-size: var(--fs-lg);  font-weight: 600; color: var(--text-primary); }
+.psc-text-body   { font-size: var(--fs-md);  color: var(--text-primary); }
+.psc-text-label  { font-size: var(--fs-xs);  font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); }
+.psc-text-muted  { color: var(--text-muted); }
+.psc-text-mono   { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+/* Large KPI readout */
+.psc-kpi-value {
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--wx-accent);
+  text-shadow: 0 0 18px var(--wx-glow);
+  transition: color var(--transition), text-shadow var(--transition);
+}
+.psc-kpi-unit {
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  margin-left: 4px;
+}
+
+
+/* ---------------------------------------------------------------------
+   4. HEADER / NAV
+   --------------------------------------------------------------------- */
+.psc-header {
+  background: linear-gradient(180deg, #161d27 0%, #121820 100%);
+  border-bottom: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-sm);
+  padding: 0 20px;
+  min-height: 56px;
+  align-items: center;
+  color: var(--text-primary);
+}
+
+.psc-header-title {
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--text-primary);
+}
+
+.psc-header-subtitle {
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+}
+
+/* Small accent bar under/beside a header title */
+.psc-header-accent {
+  width: 4px;
+  height: 24px;
+  border-radius: 2px;
+  background: var(--wx-accent);
+  box-shadow: 0 0 10px var(--wx-glow);
+}
+
+.psc-header-clock {
+  font-family: var(--font-mono);
+  font-size: var(--fs-md);
+  color: var(--text-secondary);
+}
+
+/* Section header inside a card or column */
+.psc-section-header {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 12px;
+}
+
+/* Side nav */
+.psc-sidenav {
+  background: var(--bg-surface);
+  border-right: 1px solid var(--border-subtle);
+}
+.psc-nav-item {
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+}
+.psc-nav-item:hover   { background: var(--bg-hover); color: var(--text-primary); }
+.psc-nav-item-active  { background: var(--accent-soft); color: var(--accent-hover); box-shadow: inset 3px 0 0 var(--accent); }
+
+
+/* ---------------------------------------------------------------------
+   5. CARDS / PANELS
+   --------------------------------------------------------------------- */
+.psc-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 16px;
+  color: var(--text-primary);
+}
+.psc-card-elevated {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 16px;
+}
+.psc-card-hover {
+  transition: transform var(--transition), border-color var(--transition);
+}
+.psc-card-hover:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-strong);
+}
+
+
+/* ---------------------------------------------------------------------
+   6. BUTTONS
+   --------------------------------------------------------------------- */
+.psc-btn,
+.psc-btn-primary,
+.psc-btn-ghost,
+.psc-btn-danger {
+  font-family: var(--font-base);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition),
+              color var(--transition), box-shadow var(--transition), transform 80ms ease;
+}
+
+.psc-btn {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  border: 1px solid var(--border-strong);
+}
+.psc-btn:hover  { background: var(--bg-hover); }
+.psc-btn:active { transform: scale(0.98); }
+
+.psc-btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: 1px solid var(--accent);
+}
+.psc-btn-primary:hover  { background: var(--accent-hover); box-shadow: 0 0 0 3px var(--accent-soft); }
+.psc-btn-primary:active { background: var(--accent-active); transform: scale(0.98); }
+
+.psc-btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid transparent;
+}
+.psc-btn-ghost:hover { background: var(--bg-hover); color: var(--text-primary); }
+
+.psc-btn-danger {
+  background: rgba(239, 68, 68, 0.12);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.45);
+}
+.psc-btn-danger:hover { background: rgba(239, 68, 68, 0.22); color: #fff; }
+
+.psc-btn:focus-visible,
+.psc-btn-primary:focus-visible,
+.psc-btn-ghost:focus-visible,
+.psc-btn-danger:focus-visible {
+  outline: 2px solid var(--accent-hover);
+  outline-offset: 2px;
+}
+
+[disabled].psc-btn,
+[disabled].psc-btn-primary,
+.psc-btn-disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+
+/* ---------------------------------------------------------------------
+   7. SELECTOR BUTTONS (segmented control / Multi-State Button)
+   ---------------------------------------------------------------------
+   Multi-State Button: put "selector-btn" in unselectedStyle.classes
+   and "selector-btn-active" in selectedStyle.classes.
+   Or wrap plain buttons in a flex container with "selector-group".
+   --------------------------------------------------------------------- */
+.psc-selector-group {
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 3px;
+  gap: 3px;
+}
+
+.psc-selector-btn {
+  background: transparent !important;
+  color: var(--text-secondary) !important;
+  border: 1px solid transparent !important;
+  border-radius: 6px;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition), box-shadow var(--transition);
+}
+.psc-selector-btn:hover {
+  background: var(--bg-hover) !important;
+  color: var(--text-primary) !important;
+}
+
+.psc-selector-btn-active {
+  background: var(--bg-elevated) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-strong) !important;
+  border-radius: 6px;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  padding: 6px 14px;
+  box-shadow: var(--shadow-sm), inset 0 -2px 0 var(--wx-accent);
+}
+
+/* Pill-style toggle chips */
+.psc-chip {
+  background: var(--bg-surface-2);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.psc-chip:hover       { border-color: var(--border-strong); color: var(--text-primary); }
+.psc-chip-active      { background: var(--accent-soft); color: var(--accent-hover); border: 1px solid var(--accent); border-radius: 999px; padding: 4px 12px; font-size: var(--fs-xs); font-weight: 600; }
+
+
+/* ---------------------------------------------------------------------
+   8. INPUTS / DROPDOWNS
+   --------------------------------------------------------------------- */
+.psc-input {
+  background: var(--bg-surface-2) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-strong) !important;
+  border-radius: var(--radius-md);
+  font-family: var(--font-base);
+  font-size: var(--fs-sm);
+  padding: 6px 10px;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.psc-input:focus-within {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+/* Perspective dropdown option list (renders in a portal) */
+.ia_dropdown__optionsContainer,
+.iaDropdownCommon_options {
+  background: var(--bg-elevated) !important;
+  border: 1px solid var(--border-strong) !important;
+  color: var(--text-primary) !important;
+}
+
+
+/* ---------------------------------------------------------------------
+   9. STATUS INDICATORS
+   --------------------------------------------------------------------- */
+.psc-status-ok      { color: var(--ok); }
+.psc-status-warn    { color: var(--warn); }
+.psc-status-alarm   { color: var(--alarm); }
+.psc-status-info    { color: var(--info); }
+.psc-status-offline { color: var(--offline); }
+
+.psc-badge-ok,
+.psc-badge-warn,
+.psc-badge-alarm,
+.psc-badge-offline {
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.psc-badge-ok      { background: rgba(34, 197, 94, 0.15);  color: #86efac; border: 1px solid rgba(34, 197, 94, 0.4); }
+.psc-badge-warn    { background: rgba(245, 158, 11, 0.15); color: #fcd34d; border: 1px solid rgba(245, 158, 11, 0.4); }
+.psc-badge-alarm   { background: rgba(239, 68, 68, 0.15);  color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.4); }
+.psc-badge-offline { background: rgba(100, 116, 139, 0.2); color: #cbd5e1; border: 1px solid rgba(100, 116, 139, 0.4); }
+
+.psc-pulse-alarm { animation: alarm-pulse 1.4s ease-in-out infinite; }
+@keyframes alarm-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.55); }
+  50%      { box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
+}
+
+
+/* ---------------------------------------------------------------------
+   10. WEATHER-DRIVEN DYNAMIC COLORING
+   ---------------------------------------------------------------------
+   Put ONE of these on a container. Children using
+   weather-card / weather-accent / weather-icon / kpi-value / etc.
+   inherit the palette automatically.
+   --------------------------------------------------------------------- */
+.psc-weather-clear,
+.psc-weather-sunny {
+  --wx-accent:   #fbbf24;
+  --wx-accent-2: #fde68a;
+  --wx-glow:     rgba(251, 191, 36, 0.35);
+  --wx-bg:       linear-gradient(160deg, #3a2a0b 0%, #1f1a10 45%, #161b22 100%);
+}
+
+.psc-weather-partly-cloudy {
+  --wx-accent:   #fcd34d;
+  --wx-accent-2: #cbd5e1;
+  --wx-glow:     rgba(252, 211, 77, 0.25);
+  --wx-bg:       linear-gradient(160deg, #2e2a1d 0%, #232832 50%, #161b22 100%);
+}
+
+.psc-weather-cloudy,
+.psc-weather-overcast {
+  --wx-accent:   #94a3b8;
+  --wx-accent-2: #cbd5e1;
+  --wx-glow:     rgba(148, 163, 184, 0.25);
+  --wx-bg:       linear-gradient(160deg, #2a313c 0%, #1e242d 55%, #161b22 100%);
+}
+
+.psc-weather-rain,
+.psc-weather-drizzle {
+  --wx-accent:   #38bdf8;
+  --wx-accent-2: #7dd3fc;
+  --wx-glow:     rgba(56, 189, 248, 0.3);
+  --wx-bg:       linear-gradient(160deg, #0c2a3d 0%, #11202d 50%, #161b22 100%);
+}
+
+.psc-weather-storm,
+.psc-weather-thunderstorm {
+  --wx-accent:   #a78bfa;
+  --wx-accent-2: #facc15;
+  --wx-glow:     rgba(167, 139, 250, 0.35);
+  --wx-bg:       linear-gradient(160deg, #241a3d 0%, #1a1729 50%, #13161d 100%);
+}
+
+.psc-weather-snow,
+.psc-weather-sleet {
+  --wx-accent:   #e0f2fe;
+  --wx-accent-2: #bae6fd;
+  --wx-glow:     rgba(224, 242, 254, 0.3);
+  --wx-bg:       linear-gradient(160deg, #263445 0%, #1d2632 50%, #161b22 100%);
+}
+
+.psc-weather-fog,
+.psc-weather-haze {
+  --wx-accent:   #a8b3c1;
+  --wx-accent-2: #d1d9e2;
+  --wx-glow:     rgba(168, 179, 193, 0.2);
+  --wx-bg:       linear-gradient(180deg, #2b3138 0%, #22272e 60%, #161b22 100%);
+}
+
+.psc-weather-wind {
+  --wx-accent:   #2dd4bf;
+  --wx-accent-2: #99f6e4;
+  --wx-glow:     rgba(45, 212, 191, 0.3);
+  --wx-bg:       linear-gradient(160deg, #0d2e2b 0%, #14222a 50%, #161b22 100%);
+}
+
+.psc-weather-hot {
+  --wx-accent:   #f97316;
+  --wx-accent-2: #fdba74;
+  --wx-glow:     rgba(249, 115, 22, 0.35);
+  --wx-bg:       linear-gradient(160deg, #3d1a0b 0%, #261711 50%, #161b22 100%);
+}
+
+.psc-weather-cold,
+.psc-weather-freezing {
+  --wx-accent:   #60a5fa;
+  --wx-accent-2: #c7d2fe;
+  --wx-glow:     rgba(96, 165, 250, 0.3);
+  --wx-bg:       linear-gradient(160deg, #13234a 0%, #151d33 50%, #161b22 100%);
+}
+
+.psc-weather-night {
+  --wx-accent:   #818cf8;
+  --wx-accent-2: #c4b5fd;
+  --wx-glow:     rgba(129, 140, 248, 0.3);
+  --wx-bg:       linear-gradient(160deg, #141a3a 0%, #11152a 50%, #0d1117 100%);
+}
+
+.psc-weather-unknown {
+  --wx-accent:   var(--offline);
+  --wx-accent-2: #94a3b8;
+  --wx-glow:     rgba(100, 116, 139, 0.2);
+  --wx-bg:       linear-gradient(160deg, #1c232d 0%, #161b22 100%);
+}
+
+/* Weather-aware components */
+.psc-weather-card {
+  background: var(--wx-bg) !important;
+  border: 1px solid var(--border-subtle);
+  border-top: 2px solid var(--wx-accent);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md), 0 -4px 24px -12px var(--wx-glow);
+  padding: 16px;
+  color: var(--wx-text);
+  transition: background 600ms ease, border-color var(--transition), box-shadow var(--transition);
+}
+
+.psc-weather-accent { color: var(--wx-accent) !important; transition: color var(--transition); }
+.psc-weather-accent-2 { color: var(--wx-accent-2) !important; }
+
+/* For Icon components: sets the SVG fill */
+.psc-weather-icon {
+  fill: var(--wx-accent) !important;
+  color: var(--wx-accent) !important;
+  filter: drop-shadow(0 0 8px var(--wx-glow));
+  transition: fill var(--transition), filter var(--transition);
+}
+
+.psc-weather-bar {
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--wx-accent), var(--wx-accent-2));
+  box-shadow: 0 0 10px var(--wx-glow);
+}
+
+.psc-weather-border { border: 1px solid var(--wx-accent) !important; }
+
+/* Selector buttons inside a weather container pick up its accent */
+[class*="psc-weather-"] .psc-selector-btn-active {
+  box-shadow: var(--shadow-sm), inset 0 -2px 0 var(--wx-accent);
+}
+
+
+/* ---------------------------------------------------------------------
+   11. TABLES
+   --------------------------------------------------------------------- */
+.psc-table-dark .ia_table__head__header__cell,
+.psc-table-dark .ia_table__headContainer {
+  background: var(--bg-surface-2) !important;
+  color: var(--text-secondary) !important;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-color: var(--border-subtle) !important;
+}
+.psc-table-dark .ia_table__body__row {
+  background: var(--bg-surface) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-subtle) !important;
+}
+.psc-table-dark .ia_table__body__row:nth-child(even) {
+  background: var(--bg-surface-2) !important;
+}
+.psc-table-dark .ia_table__body__row:hover {
+  background: var(--bg-hover) !important;
+}
+
+
+/* ---------------------------------------------------------------------
+   12. UTILITIES
+   --------------------------------------------------------------------- */
+.psc-divider     { height: 1px; background: var(--border-subtle); }
+.psc-glass       { background: rgba(22, 27, 34, 0.65) !important; backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.06); }
+.psc-fade-in     { animation: fade-in 300ms ease both; }
+@keyframes fade-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+
+/* ---------------------------------------------------------------------
+   13. VIEWPORT SCALING (weather kiosk)
+   ---------------------------------------------------------------------
+   The dashboard views size everything in rem. 1rem = 14px at the
+   1024x600 design size and grows with whichever viewport dimension is
+   tighter, so the layout scales as a unit up to 4K (~50px at 3840x2160).
+   --------------------------------------------------------------------- */
+html {
+  font-size: clamp(9px, min(1.3672vw, 2.3333vh), 56px) !important;
+}
+body,
+#app-container {
+  font-size: 1rem !important;
+}
+.psc-badge-ok,
+.psc-badge-warn,
+.psc-badge-alarm,
+.psc-badge-offline {
+  padding: 0.143rem 0.714rem;
+}
+.psc-kpi-unit { margin-left: 0.286rem; }

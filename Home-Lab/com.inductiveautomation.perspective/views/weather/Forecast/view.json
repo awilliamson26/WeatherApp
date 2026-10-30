@@ -1,0 +1,2255 @@
+{
+  "custom": {
+    "scale": 1
+  },
+  "params": {
+    "fc": {},
+    "accent": "#94a3b8"
+  },
+  "propConfig": {
+    "params.fc": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.accent": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "custom.scale": {
+      "persistent": false,
+      "binding": {
+        "type": "expr",
+        "config": {
+          "expression": "max(0.643, min(4, min({page.props.dimensions.viewport.width} / 1024.0, {page.props.dimensions.viewport.height} / 600.0)))"
+        }
+      }
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 1024,
+      "height": 544
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "row",
+      "style": {
+        "classes": "",
+        "overflow": "hidden",
+        "gap": "0.8571rem",
+        "padding": "0.8571rem 1.1429rem 2rem"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "DailyForecast"
+        },
+        "position": {
+          "basis": "31.4286rem",
+          "grow": 0,
+          "shrink": 0
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "classes": "weather-card",
+            "overflow": "hidden",
+            "padding": "0.8571rem 1.1429rem"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "Header"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "style": {
+                "classes": "",
+                "overflow": "hidden",
+                "gap": "0.5714rem",
+                "paddingBottom": "0.2857rem"
+              },
+              "alignItems": "center"
+            },
+            "children": [
+              {
+                "type": "ia.display.icon",
+                "meta": {
+                  "name": "Icon"
+                },
+                "position": {
+                  "basis": "1.1429rem",
+                  "shrink": 0
+                },
+                "props": {
+                  "path": "material/schedule",
+                  "style": {
+                    "classes": "weather-icon",
+                    "height": "1.1429rem",
+                    "width": "1.1429rem"
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Title"
+                },
+                "position": {
+                  "grow": 1,
+                  "shrink": 1,
+                  "basis": "0px"
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-label",
+                    "whiteSpace": "nowrap",
+                    "overflow": "hidden",
+                    "textOverflow": "ellipsis"
+                  },
+                  "text": "5-day forecast"
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Meta"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-muted",
+                    "fontSize": "var(--fs-sm)",
+                    "whiteSpace": "nowrap"
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.fc.range"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "Day0"
+            },
+            "position": {
+              "basis": "0px",
+              "grow": 1,
+              "shrink": 1
+            },
+            "props": {
+              "direction": "row",
+              "style": {
+                "classes": "",
+                "overflow": "hidden",
+                "gap": "0.7143rem",
+                "borderTop": "none",
+                "minHeight": "2.5714rem"
+              },
+              "alignItems": "center"
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Name"
+                },
+                "position": {
+                  "basis": "3.5714rem",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-body",
+                    "fontWeight": 600
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.fc.days[0].name"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.icon",
+                "meta": {
+                  "name": "Icon"
+                },
+                "position": {
+                  "basis": "1.4286rem",
+                  "shrink": 0
+                },
+                "props": {
+                  "path": "material/cloud",
+                  "style": {
+                    "classes": "weather-icon",
+                    "height": "1.4286rem",
+                    "width": "1.4286rem"
+                  }
+                },
+                "propConfig": {
+                  "props.path": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.fc.days[0].icon"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Pop"
+                },
+                "position": {
+                  "basis": "2.5714rem",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-mono",
+                    "color": "var(--text-secondary)",
+                    "fontSize": "var(--fs-sm)",
+                    "textAlign": "right"
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.fc.days[0].pop"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Lo"
+                },
+                "position": {
+                  "basis": "2.4286rem",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-mono",
+                    "color": "var(--text-muted)",
+                    "textAlign": "right"
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.fc.days[0].lo"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "Range"
+                },
+                "position": {
+                  "basis": "0.4286rem",
+                  "grow": 1,
+                  "shrink": 1
+                },
+                "props": {
+                  "direction": "row",
+                  "style": {
+                    "classes": "",
+                    "overflow": "hidden",
+                    "background": "var(--bg-surface-2)",
+                    "borderRadius": "0.2143rem",
+                    "minWidth": "3.5714rem"
+                  }
+                },
+                "children": [
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "Offset"
+                    },
+                    "position": {
+                      "basis": "0%",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "row",
+                      "style": {
+                        "classes": "",
+                        "overflow": "hidden"
+                      }
+                    },
+                    "children": [],
+                    "propConfig": {
+                      "position.basis": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.params.fc.days[0].barLeft"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "Fill"
+                    },
+                    "position": {
+                      "basis": "0%",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "row",
+                      "style": {
+                        "classes": "weather-bar",
+                        "overflow": "hidden",
+                        "height": "0.4286rem",
+                        "borderRadius": "0.2143rem"
+                      }
+                    },
+                    "children": [],
+                    "propConfig": {
+                      "position.basis": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.params.fc.days[0].barWidth"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Hi"
+                },
+                "position": {
+                  "basis": "2.4286rem",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-mono",
+                    "fontWeight": 600
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.fc.days[0].hi"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Condition"
+                },
+                "position": {
+                  "basis": "7.4286rem",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-muted",
+                    "fontSize": "var(--fs-sm)",
+                    "whiteSpace": "nowrap",
+                    "overflow": "hidden",
+                    "textOverflow": "ellipsis"
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.fc.days[0].condition"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "type": "property",
+                  "config": {
+                    "path": "view.params.fc.days[0].visible"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "Day1"
+            },
+            "position": {
+              "basis": "0px",
+              "grow": 1,
+              "shrink": 1
+            },
+            "props": {
+              "direction": "row",
+              "style": {
+                "classes": "",
+                "overflow": "hidden",
+                "gap": "0.7143rem",
+                "borderTop": "1px solid var(--border-subtle)",
+                "minHeight": "2.5714rem"
+              },
+              "alignItems": "center"
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Name"
+                },
+                "position": {
+                  "basis": "3.5714rem",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-body",
+                    "fontWeight": 600
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.fc.days[1].name"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.icon",
+                "meta": {
+                  "name": "Icon"
+                },
+                "position": {
+                  "basis": "1.4286rem",
+                  "shrink": 0
+                },
+                "props": {
+                  "path": "material/cloud",
+                  "style": {
+                    "classes": "weather-icon",
+                    "height": "1.4286rem",
+                    "width": "1.4286rem"
+                  }
+                },
+                "propConfig": {
+                  "props.path": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.fc.days[1].icon"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Pop"
+                },
+                "position": {
+                  "basis": "2.5714rem",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-mono",
+                    "color": "var(--text-secondary)",
+                    "fontSize": "var(--fs-sm)",
+                    "textAlign": "right"
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.fc.days[1].pop"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Lo"
+                },
+                "position": {
+                  "basis": "2.4286rem",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-mono",
+                    "color": "var(--text-muted)",
+                    "textAlign": "right"
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.fc.days[1].lo"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "Range"
+                },
+                "position": {
+                  "basis": "0.4286rem",
+                  "grow": 1,
+                  "shrink": 1
+                },
+                "props": {
+                  "direction": "row",
+                  "style": {
+                    "classes": "",
+                    "overflow": "hidden",
+                    "background": "var(--bg-surface-2)",
+                    "borderRadius": "0.2143rem",
+                    "minWidth": "3.5714rem"
+                  }
+                },
+                "children": [
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "Offset"
+                    },
+                    "position": {
+                      "basis": "0%",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "row",
+                      "style": {
+                        "classes": "",
+                        "overflow": "hidden"
+                      }
+                    },
+                    "children": [],
+                    "propConfig": {
+                      "position.basis": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.params.fc.days[1].barLeft"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "Fill"
+                    },
+                    "position": {
+                      "basis": "0%",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "row",
+                      "style": {
+                        "classes": "weather-bar",
+                        "overflow": "hidden",
+                        "height": "0.4286rem",
+                        "borderRadius": "0.2143rem"
+                      }
+                    },
+                    "children": [],
+                    "propConfig": {
+                      "position.basis": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.params.fc.days[1].barWidth"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Hi"
+                },
+                "position": {
+                  "basis": "2.4286rem",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-mono",
+                    "fontWeight": 600
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.fc.days[1].hi"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Condition"
+                },
+                "position": {
+                  "basis": "7.4286rem",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-muted",
+                    "fontSize": "var(--fs-sm)",
+                    "whiteSpace": "nowrap",
+                    "overflow": "hidden",
+                    "textOverflow": "ellipsis"
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.fc.days[1].condition"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "type": "property",
+                  "config": {
+                    "path": "view.params.fc.days[1].visible"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "Day2"
+            },
+            "position": {
+              "basis": "0px",
+              "grow": 1,
+              "shrink": 1
+            },
+            "props": {
+              "direction": "row",
+              "style": {
+                "classes": "",
+                "overflow": "hidden",
+                "gap": "0.7143rem",
+                "borderTop": "1px solid var(--border-subtle)",
+                "minHeight": "2.5714rem"
+              },
+              "alignItems": "center"
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Name"
+                },
+                "position": {
+                  "basis": "3.5714rem",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-body",
+                    "fontWeight": 600
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.fc.days[2].name"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.icon",
+                "meta": {
+                  "name": "Icon"
+                },
+                "position": {
+                  "basis": "1.4286rem",
+                  "shrink": 0
+                },
+                "props": {
+                  "path": "material/cloud",
+                  "style": {
+                    "classes": "weather-icon",
+                    "height": "1.4286rem",
+                    "width": "1.4286rem"
+                  }
+                },
+                "propConfig": {
+                  "props.path": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.fc.days[2].icon"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Pop"
+                },
+                "position": {
+                  "basis": "2.5714rem",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-mono",
+                    "color": "var(--text-secondary)",
+                    "fontSize": "var(--fs-sm)",
+                    "textAlign": "right"
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.fc.days[2].pop"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Lo"
+                },
+                "position": {
+                  "basis": "2.4286rem",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-mono",
+                    "color": "var(--text-muted)",
+                    "textAlign": "right"
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.fc.days[2].lo"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "Range"
+                },
+                "position": {
+                  "basis": "0.4286rem",
+                  "grow": 1,
+                  "shrink": 1
+                },
+                "props": {
+                  "direction": "row",
+                  "style": {
+                    "classes": "",
+                    "overflow": "hidden",
+                    "background": "var(--bg-surface-2)",
+                    "borderRadius": "0.2143rem",
+                    "minWidth": "3.5714rem"
+                  }
+                },
+                "children": [
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "Offset"
+                    },
+                    "position": {
+                      "basis": "0%",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "row",
+                      "style": {
+                        "classes": "",
+                        "overflow": "hidden"
+                      }
+                    },
+                    "children": [],
+                    "propConfig": {
+                      "position.basis": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.params.fc.days[2].barLeft"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "Fill"
+                    },
+                    "position": {
+                      "basis": "0%",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "row",
+                      "style": {
+                        "classes": "weather-bar",
+                        "overflow": "hidden",
+                        "height": "0.4286rem",
+                        "borderRadius": "0.2143rem"
+                      }
+                    },
+                    "children": [],
+                    "propConfig": {
+                      "position.basis": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.params.fc.days[2].barWidth"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Hi"
+                },
+                "position": {
+                  "basis": "2.4286rem",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-mono",
+                    "fontWeight": 600
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.fc.days[2].hi"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Condition"
+                },
+                "position": {
+                  "basis": "7.4286rem",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-muted",
+                    "fontSize": "var(--fs-sm)",
+                    "whiteSpace": "nowrap",
+                    "overflow": "hidden",
+                    "textOverflow": "ellipsis"
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.fc.days[2].condition"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "type": "property",
+                  "config": {
+                    "path": "view.params.fc.days[2].visible"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "Day3"
+            },
+            "position": {
+              "basis": "0px",
+              "grow": 1,
+              "shrink": 1
+            },
+            "props": {
+              "direction": "row",
+              "style": {
+                "classes": "",
+                "overflow": "hidden",
+                "gap": "0.7143rem",
+                "borderTop": "1px solid var(--border-subtle)",
+                "minHeight": "2.5714rem"
+              },
+              "alignItems": "center"
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Name"
+                },
+                "position": {
+                  "basis": "3.5714rem",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-body",
+                    "fontWeight": 600
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.fc.days[3].name"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.icon",
+                "meta": {
+                  "name": "Icon"
+                },
+                "position": {
+                  "basis": "1.4286rem",
+                  "shrink": 0
+                },
+                "props": {
+                  "path": "material/cloud",
+                  "style": {
+                    "classes": "weather-icon",
+                    "height": "1.4286rem",
+                    "width": "1.4286rem"
+                  }
+                },
+                "propConfig": {
+                  "props.path": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.fc.days[3].icon"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Pop"
+                },
+                "position": {
+                  "basis": "2.5714rem",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-mono",
+                    "color": "var(--text-secondary)",
+                    "fontSize": "var(--fs-sm)",
+                    "textAlign": "right"
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.fc.days[3].pop"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Lo"
+                },
+                "position": {
+                  "basis": "2.4286rem",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-mono",
+                    "color": "var(--text-muted)",
+                    "textAlign": "right"
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.fc.days[3].lo"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "Range"
+                },
+                "position": {
+                  "basis": "0.4286rem",
+                  "grow": 1,
+                  "shrink": 1
+                },
+                "props": {
+                  "direction": "row",
+                  "style": {
+                    "classes": "",
+                    "overflow": "hidden",
+                    "background": "var(--bg-surface-2)",
+                    "borderRadius": "0.2143rem",
+                    "minWidth": "3.5714rem"
+                  }
+                },
+                "children": [
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "Offset"
+                    },
+                    "position": {
+                      "basis": "0%",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "row",
+                      "style": {
+                        "classes": "",
+                        "overflow": "hidden"
+                      }
+                    },
+                    "children": [],
+                    "propConfig": {
+                      "position.basis": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.params.fc.days[3].barLeft"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "Fill"
+                    },
+                    "position": {
+                      "basis": "0%",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "row",
+                      "style": {
+                        "classes": "weather-bar",
+                        "overflow": "hidden",
+                        "height": "0.4286rem",
+                        "borderRadius": "0.2143rem"
+                      }
+                    },
+                    "children": [],
+                    "propConfig": {
+                      "position.basis": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.params.fc.days[3].barWidth"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Hi"
+                },
+                "position": {
+                  "basis": "2.4286rem",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-mono",
+                    "fontWeight": 600
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.fc.days[3].hi"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Condition"
+                },
+                "position": {
+                  "basis": "7.4286rem",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-muted",
+                    "fontSize": "var(--fs-sm)",
+                    "whiteSpace": "nowrap",
+                    "overflow": "hidden",
+                    "textOverflow": "ellipsis"
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.fc.days[3].condition"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "type": "property",
+                  "config": {
+                    "path": "view.params.fc.days[3].visible"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "Day4"
+            },
+            "position": {
+              "basis": "0px",
+              "grow": 1,
+              "shrink": 1
+            },
+            "props": {
+              "direction": "row",
+              "style": {
+                "classes": "",
+                "overflow": "hidden",
+                "gap": "0.7143rem",
+                "borderTop": "1px solid var(--border-subtle)",
+                "minHeight": "2.5714rem"
+              },
+              "alignItems": "center"
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Name"
+                },
+                "position": {
+                  "basis": "3.5714rem",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-body",
+                    "fontWeight": 600
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.fc.days[4].name"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.icon",
+                "meta": {
+                  "name": "Icon"
+                },
+                "position": {
+                  "basis": "1.4286rem",
+                  "shrink": 0
+                },
+                "props": {
+                  "path": "material/cloud",
+                  "style": {
+                    "classes": "weather-icon",
+                    "height": "1.4286rem",
+                    "width": "1.4286rem"
+                  }
+                },
+                "propConfig": {
+                  "props.path": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.fc.days[4].icon"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Pop"
+                },
+                "position": {
+                  "basis": "2.5714rem",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-mono",
+                    "color": "var(--text-secondary)",
+                    "fontSize": "var(--fs-sm)",
+                    "textAlign": "right"
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.fc.days[4].pop"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Lo"
+                },
+                "position": {
+                  "basis": "2.4286rem",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-mono",
+                    "color": "var(--text-muted)",
+                    "textAlign": "right"
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.fc.days[4].lo"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "Range"
+                },
+                "position": {
+                  "basis": "0.4286rem",
+                  "grow": 1,
+                  "shrink": 1
+                },
+                "props": {
+                  "direction": "row",
+                  "style": {
+                    "classes": "",
+                    "overflow": "hidden",
+                    "background": "var(--bg-surface-2)",
+                    "borderRadius": "0.2143rem",
+                    "minWidth": "3.5714rem"
+                  }
+                },
+                "children": [
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "Offset"
+                    },
+                    "position": {
+                      "basis": "0%",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "row",
+                      "style": {
+                        "classes": "",
+                        "overflow": "hidden"
+                      }
+                    },
+                    "children": [],
+                    "propConfig": {
+                      "position.basis": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.params.fc.days[4].barLeft"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "Fill"
+                    },
+                    "position": {
+                      "basis": "0%",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "row",
+                      "style": {
+                        "classes": "weather-bar",
+                        "overflow": "hidden",
+                        "height": "0.4286rem",
+                        "borderRadius": "0.2143rem"
+                      }
+                    },
+                    "children": [],
+                    "propConfig": {
+                      "position.basis": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.params.fc.days[4].barWidth"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Hi"
+                },
+                "position": {
+                  "basis": "2.4286rem",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-mono",
+                    "fontWeight": 600
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.fc.days[4].hi"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Condition"
+                },
+                "position": {
+                  "basis": "7.4286rem",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-muted",
+                    "fontSize": "var(--fs-sm)",
+                    "whiteSpace": "nowrap",
+                    "overflow": "hidden",
+                    "textOverflow": "ellipsis"
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.params.fc.days[4].condition"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "type": "property",
+                  "config": {
+                    "path": "view.params.fc.days[4].visible"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "TemperatureTrend"
+        },
+        "position": {
+          "basis": "0px",
+          "grow": 1,
+          "shrink": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "classes": "weather-card",
+            "overflow": "hidden",
+            "gap": "0.2857rem",
+            "padding": "0.8571rem 1.1429rem",
+            "minWidth": "0px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "Header"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "style": {
+                "classes": "",
+                "overflow": "hidden",
+                "gap": "0.5714rem",
+                "paddingBottom": "0.2857rem"
+              },
+              "alignItems": "center"
+            },
+            "children": [
+              {
+                "type": "ia.display.icon",
+                "meta": {
+                  "name": "Icon"
+                },
+                "position": {
+                  "basis": "1.1429rem",
+                  "shrink": 0
+                },
+                "props": {
+                  "path": "material/update",
+                  "style": {
+                    "classes": "weather-icon",
+                    "height": "1.1429rem",
+                    "width": "1.1429rem"
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Title"
+                },
+                "position": {
+                  "grow": 1,
+                  "shrink": 1,
+                  "basis": "0px"
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-label",
+                    "whiteSpace": "nowrap",
+                    "overflow": "hidden",
+                    "textOverflow": "ellipsis"
+                  },
+                  "text": "Temperature trend"
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Meta"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "text-muted",
+                    "fontSize": "var(--fs-sm)",
+                    "whiteSpace": "nowrap"
+                  },
+                  "text": "3-hour intervals"
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.chart.xy",
+            "meta": {
+              "name": "TempChart"
+            },
+            "position": {
+              "grow": 1,
+              "shrink": 1,
+              "basis": "0px"
+            },
+            "props": {
+              "dataSources": {
+                "temps": []
+              },
+              "background": {
+                "render": "color",
+                "gradient": {
+                  "direction": "linear",
+                  "rotation": 0,
+                  "colors": []
+                },
+                "color": "#161b22",
+                "opacity": 0
+              },
+              "legend": {
+                "enabled": false,
+                "position": "bottom",
+                "absolute": {
+                  "x": 0,
+                  "y": 0
+                },
+                "markers": {
+                  "enabled": true,
+                  "width": 20,
+                  "height": 20,
+                  "mirrorLookOfSeries": true,
+                  "stroke": {
+                    "color": "",
+                    "width": 1,
+                    "opacity": 0
+                  },
+                  "cornerRadius": {
+                    "topLeft": 0,
+                    "topRight": 0,
+                    "bottomLeft": 0,
+                    "bottomRight": 0
+                  },
+                  "icon": {
+                    "path": "",
+                    "color": "",
+                    "verticalCenter": "top",
+                    "horizontalCenter": "left",
+                    "width": 20,
+                    "height": 20
+                  }
+                },
+                "labels": {
+                  "text": "[bold]{name}[/]",
+                  "font": {
+                    "weight": 400,
+                    "size": 16,
+                    "color": ""
+                  }
+                }
+              },
+              "scrollBars": {
+                "horizontal": {
+                  "enabled": false,
+                  "series": ""
+                },
+                "vertical": {
+                  "enabled": false,
+                  "series": ""
+                }
+              },
+              "cursor": {
+                "enabled": true,
+                "series": "",
+                "lineX": {
+                  "enabled": true,
+                  "stroke": {
+                    "color": "#6b7787",
+                    "width": 1,
+                    "opacity": 0.6,
+                    "dashArray": ""
+                  }
+                },
+                "lineY": {
+                  "enabled": false,
+                  "stroke": {
+                    "color": "",
+                    "width": 1,
+                    "opacity": 0.4,
+                    "dashArray": ""
+                  }
+                }
+              },
+              "xAxes": [
+                {
+                  "name": "time",
+                  "label": {
+                    "enabled": false,
+                    "text": "",
+                    "color": ""
+                  },
+                  "visible": true,
+                  "tooltip": {
+                    "enabled": false,
+                    "text": "",
+                    "cornerRadius": 3,
+                    "pointerLength": 4,
+                    "background": {
+                      "color": "",
+                      "opacity": 1
+                    }
+                  },
+                  "inversed": false,
+                  "render": "date",
+                  "category": {
+                    "break": {
+                      "enabled": false,
+                      "startCategory": "",
+                      "endCategory": "",
+                      "size": 0.05
+                    }
+                  },
+                  "date": {
+                    "baseInterval": {
+                      "enabled": false,
+                      "timeUnit": "hour",
+                      "count": 1,
+                      "skipEmptyPeriods": false
+                    },
+                    "range": {
+                      "max": "",
+                      "min": "",
+                      "useStrict": false
+                    },
+                    "break": {
+                      "enabled": false,
+                      "startDate": "",
+                      "endDate": "",
+                      "size": 0.05
+                    },
+                    "inputFormat": "yyyy-MM-dd kk:mm:ss",
+                    "format": "EEE"
+                  },
+                  "value": {
+                    "range": {
+                      "max": "",
+                      "min": "",
+                      "useStrict": false
+                    },
+                    "logarithmic": false,
+                    "break": {
+                      "enabled": false,
+                      "startValue": 0,
+                      "endValue": 100,
+                      "size": 0.05
+                    },
+                    "format": "#,###.##"
+                  },
+                  "appearance": {
+                    "opposite": false,
+                    "inside": false,
+                    "labels": {
+                      "color": "#9aa7b6",
+                      "opacity": 1,
+                      "rotation": 0,
+                      "verticalCenter": "middle",
+                      "horizontalCenter": "middle"
+                    },
+                    "grid": {
+                      "color": "#262f3b",
+                      "opacity": 1,
+                      "dashArray": "",
+                      "minDistance": 60,
+                      "position": 0.5
+                    },
+                    "font": {
+                      "size": "0.8571rem",
+                      "weight": 400
+                    }
+                  }
+                }
+              ],
+              "yAxes": [
+                {
+                  "name": "temp",
+                  "label": {
+                    "enabled": false,
+                    "text": "",
+                    "color": ""
+                  },
+                  "visible": true,
+                  "tooltip": {
+                    "enabled": false,
+                    "text": "",
+                    "cornerRadius": 3,
+                    "pointerLength": 4,
+                    "background": {
+                      "color": "",
+                      "opacity": 1
+                    }
+                  },
+                  "inversed": false,
+                  "render": "value",
+                  "category": {
+                    "break": {
+                      "enabled": false,
+                      "startCategory": "",
+                      "endCategory": "",
+                      "size": 0.05
+                    }
+                  },
+                  "date": {
+                    "baseInterval": {
+                      "enabled": false,
+                      "timeUnit": "hour",
+                      "count": 1,
+                      "skipEmptyPeriods": false
+                    },
+                    "range": {
+                      "max": "",
+                      "min": "",
+                      "useStrict": false
+                    },
+                    "break": {
+                      "enabled": false,
+                      "startDate": "",
+                      "endDate": "",
+                      "size": 0.05
+                    },
+                    "inputFormat": "yyyy-MM-dd kk:mm:ss",
+                    "format": "M/d/yyyy HH:mm:ss"
+                  },
+                  "value": {
+                    "range": {
+                      "max": "",
+                      "min": "",
+                      "useStrict": false
+                    },
+                    "logarithmic": false,
+                    "break": {
+                      "enabled": false,
+                      "startValue": 0,
+                      "endValue": 100,
+                      "size": 0.05
+                    },
+                    "format": "#'°'"
+                  },
+                  "appearance": {
+                    "opposite": false,
+                    "inside": false,
+                    "labels": {
+                      "color": "#9aa7b6",
+                      "opacity": 1,
+                      "rotation": 0,
+                      "verticalCenter": "middle",
+                      "horizontalCenter": "middle"
+                    },
+                    "grid": {
+                      "color": "#262f3b",
+                      "opacity": 1,
+                      "dashArray": "",
+                      "minDistance": 60,
+                      "position": 0.5
+                    },
+                    "font": {
+                      "size": "0.8571rem",
+                      "weight": 400
+                    }
+                  }
+                }
+              ],
+              "series": [
+                {
+                  "name": "temperature",
+                  "label": {
+                    "text": "Temperature"
+                  },
+                  "visible": true,
+                  "hiddenInLegend": false,
+                  "defaultState": {
+                    "visible": true
+                  },
+                  "data": {
+                    "source": "temps",
+                    "x": "time",
+                    "y": "temp"
+                  },
+                  "xAxis": "time",
+                  "yAxis": "temp",
+                  "zIndex": 0,
+                  "tooltip": {
+                    "enabled": true,
+                    "text": "{dateX.formatDate('EEE h a')}\n[bold]{valueY}°F[/]",
+                    "cornerRadius": 3,
+                    "pointerLength": 4,
+                    "background": {
+                      "color": "",
+                      "opacity": 1
+                    }
+                  },
+                  "render": "line",
+                  "candlestick": {
+                    "open": {
+                      "x": "",
+                      "y": ""
+                    },
+                    "high": {
+                      "x": "",
+                      "y": ""
+                    },
+                    "low": {
+                      "x": "",
+                      "y": ""
+                    },
+                    "appearance": {
+                      "fill": {
+                        "color": "",
+                        "opacity": 1
+                      },
+                      "stroke": {
+                        "color": "",
+                        "opacity": 1,
+                        "width": 1
+                      },
+                      "stacked": false,
+                      "deriveFieldsFromData": {
+                        "fill": {
+                          "color": "",
+                          "opacity": ""
+                        },
+                        "stroke": {
+                          "color": "",
+                          "opacity": "",
+                          "width": ""
+                        }
+                      },
+                      "heatRules": {
+                        "enabled": false,
+                        "max": "",
+                        "min": "",
+                        "dataField": ""
+                      }
+                    }
+                  },
+                  "column": {
+                    "open": {
+                      "x": "",
+                      "y": ""
+                    },
+                    "appearance": {
+                      "fill": {
+                        "color": "",
+                        "opacity": 1
+                      },
+                      "stroke": {
+                        "color": "",
+                        "opacity": 1,
+                        "width": 1
+                      },
+                      "stacked": false,
+                      "width": null,
+                      "height": null,
+                      "deriveFieldsFromData": {
+                        "fill": {
+                          "color": "",
+                          "opacity": ""
+                        },
+                        "stroke": {
+                          "color": "",
+                          "opacity": "",
+                          "width": ""
+                        }
+                      },
+                      "heatRules": {
+                        "enabled": false,
+                        "max": "",
+                        "min": "",
+                        "dataField": ""
+                      }
+                    }
+                  },
+                  "line": {
+                    "open": {
+                      "x": "",
+                      "y": ""
+                    },
+                    "appearance": {
+                      "connect": true,
+                      "tensionX": 0.85,
+                      "tensionY": 1,
+                      "minDistance": 0.5,
+                      "stroke": {
+                        "width": 2,
+                        "opacity": 1,
+                        "color": "#94a3b8",
+                        "dashArray": ""
+                      },
+                      "fill": {
+                        "opacity": 0.08,
+                        "color": "#94a3b8"
+                      },
+                      "bullets": [
+                        {
+                          "enabled": true,
+                          "render": "circle",
+                          "label": {
+                            "text": "{value}",
+                            "position": {
+                              "dx": 0,
+                              "dy": 0
+                            },
+                            "truncate": true,
+                            "hideOversized": true
+                          },
+                          "fill": {
+                            "color": "#161b22",
+                            "opacity": 0
+                          },
+                          "stroke": {
+                            "color": "#161b22",
+                            "opacity": 0,
+                            "width": 0
+                          },
+                          "rotation": 0,
+                          "radius": 8,
+                          "tooltip": {
+                            "enabled": true,
+                            "text": "{dateX.formatDate('EEE h a')}\n[bold]{valueY}°F[/]",
+                            "cornerRadius": 3,
+                            "pointerLength": 4,
+                            "getFillFromObject": false,
+                            "background": {
+                              "color": "#222b37",
+                              "opacity": 1
+                            }
+                          },
+                          "deriveFieldsFromData": {
+                            "fill": {
+                              "color": "",
+                              "opacity": ""
+                            },
+                            "stroke": {
+                              "color": "",
+                              "opacity": "",
+                              "width": ""
+                            },
+                            "rotation": ""
+                          },
+                          "heatRules": {
+                            "enabled": false,
+                            "max": 100,
+                            "min": 2,
+                            "dataField": ""
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "stepLine": {
+                    "open": {
+                      "x": "",
+                      "y": ""
+                    },
+                    "appearance": {
+                      "connect": true,
+                      "tensionX": 1,
+                      "tensionY": 1,
+                      "minDistance": 0.5,
+                      "stroke": {
+                        "width": 3,
+                        "opacity": 1,
+                        "color": "",
+                        "dashArray": ""
+                      },
+                      "fill": {
+                        "opacity": 0,
+                        "color": ""
+                      },
+                      "bullets": [
+                        {
+                          "enabled": true,
+                          "render": "circle",
+                          "label": {
+                            "text": "{value}",
+                            "position": {
+                              "dx": 0,
+                              "dy": 0
+                            },
+                            "truncate": true,
+                            "hideOversized": true
+                          },
+                          "fill": {
+                            "color": "",
+                            "opacity": 1
+                          },
+                          "stroke": {
+                            "color": "",
+                            "opacity": 1,
+                            "width": 1
+                          },
+                          "rotation": 0,
+                          "radius": 5,
+                          "tooltip": {
+                            "enabled": true,
+                            "text": "{name}: [bold]{valueY}[/]",
+                            "cornerRadius": 3,
+                            "pointerLength": 4,
+                            "getFillFromObject": true,
+                            "background": {
+                              "color": "",
+                              "opacity": 1
+                            }
+                          },
+                          "deriveFieldsFromData": {
+                            "fill": {
+                              "color": "",
+                              "opacity": ""
+                            },
+                            "stroke": {
+                              "color": "",
+                              "opacity": "",
+                              "width": ""
+                            },
+                            "rotation": ""
+                          },
+                          "heatRules": {
+                            "enabled": false,
+                            "max": 100,
+                            "min": 2,
+                            "dataField": ""
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ],
+              "style": {
+                "backgroundColor": "transparent"
+              }
+            },
+            "propConfig": {
+              "props.dataSources.temps": {
+                "binding": {
+                  "type": "property",
+                  "config": {
+                    "path": "view.params.fc.points"
+                  }
+                }
+              },
+              "props.series[0].line.appearance.stroke.color": {
+                "binding": {
+                  "type": "property",
+                  "config": {
+                    "path": "view.params.accent"
+                  }
+                }
+              },
+              "props.series[0].line.appearance.fill.color": {
+                "binding": {
+                  "type": "property",
+                  "config": {
+                    "path": "view.params.accent"
+                  }
+                }
+              },
+              "props.xAxes[0].appearance.grid.minDistance": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "60 * {view.custom.scale}"
+                  }
+                }
+              },
+              "props.yAxes[0].appearance.grid.minDistance": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "40 * {view.custom.scale}"
+                  }
+                }
+              },
+              "props.series[0].line.appearance.stroke.width": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "2 * {view.custom.scale}"
+                  }
+                }
+              },
+              "props.series[0].line.appearance.bullets[0].radius": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "8 * {view.custom.scale}"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
