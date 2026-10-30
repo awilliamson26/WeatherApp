@@ -4,7 +4,7 @@
   },
   "params": {
     "fc": {},
-    "accent": "#94a3b8"
+    "accent": "#a5b2c5"
   },
   "propConfig": {
     "params.fc": {
@@ -2042,12 +2042,12 @@
                       "stroke": {
                         "width": 2,
                         "opacity": 1,
-                        "color": "#94a3b8",
+                        "color": "#a5b2c5",
                         "dashArray": ""
                       },
                       "fill": {
                         "opacity": 0.08,
-                        "color": "#94a3b8"
+                        "color": "#a5b2c5"
                       },
                       "bullets": [
                         {

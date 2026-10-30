@@ -73,7 +73,7 @@
   /* Weather defaults (overridden by .psc-weather-* classes) */
   --wx-accent:   var(--accent);
   --wx-accent-2: var(--accent-hover);
-  --wx-glow:     rgba(59, 130, 246, 0.25);
+  --wx-glow:     rgba(59, 130, 246, 0.14);
   --wx-bg:       linear-gradient(160deg, #1c232d 0%, #161b22 100%);
   --wx-text:     var(--text-primary);
 
@@ -142,7 +142,7 @@ body,
   font-weight: 700;
   font-variant-numeric: tabular-nums;
   color: var(--wx-accent);
-  text-shadow: 0 0 18px var(--wx-glow);
+  text-shadow: 0 0 12px var(--wx-glow);
   transition: color var(--transition), text-shadow var(--transition);
 }
 .psc-kpi-unit {
@@ -415,10 +415,10 @@ body,
   font-weight: 700;
   letter-spacing: 0.04em;
 }
-.psc-badge-ok      { background: rgba(34, 197, 94, 0.15);  color: #86efac; border: 1px solid rgba(34, 197, 94, 0.4); }
-.psc-badge-warn    { background: rgba(245, 158, 11, 0.15); color: #fcd34d; border: 1px solid rgba(245, 158, 11, 0.4); }
-.psc-badge-alarm   { background: rgba(239, 68, 68, 0.15);  color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.4); }
-.psc-badge-offline { background: rgba(100, 116, 139, 0.2); color: #cbd5e1; border: 1px solid rgba(100, 116, 139, 0.4); }
+.psc-badge-ok      { background: rgba(34, 197, 94, 0.15);  color: #95cda6; border: 1px solid rgba(34, 197, 94, 0.4); }
+.psc-badge-warn    { background: rgba(245, 158, 11, 0.15); color: #dcc188; border: 1px solid rgba(245, 158, 11, 0.4); }
+.psc-badge-alarm   { background: rgba(239, 68, 68, 0.15);  color: #e4a5a2; border: 1px solid rgba(239, 68, 68, 0.4); }
+.psc-badge-offline { background: rgba(100, 116, 139, 0.2); color: #b5bfcb; border: 1px solid rgba(100, 116, 139, 0.4); }
 
 .psc-pulse-alarm { animation: alarm-pulse 1.4s ease-in-out infinite; }
 @keyframes alarm-pulse {
@@ -436,93 +436,93 @@ body,
    --------------------------------------------------------------------- */
 .psc-weather-clear,
 .psc-weather-sunny {
-  --wx-accent:   #fbbf24;
-  --wx-accent-2: #fde68a;
-  --wx-glow:     rgba(251, 191, 36, 0.35);
-  --wx-bg:       linear-gradient(160deg, #3a2a0b 0%, #1f1a10 45%, #161b22 100%);
+  --wx-accent:   #ceab72;
+  --wx-accent-2: #cebc92;
+  --wx-glow:     rgba(206, 171, 114, 0.14);
+  --wx-bg:       linear-gradient(160deg, #2e2515 0%, #1f1b14 50%, #161b22 100%);
 }
 
 .psc-weather-partly-cloudy {
-  --wx-accent:   #fcd34d;
-  --wx-accent-2: #cbd5e1;
-  --wx-glow:     rgba(252, 211, 77, 0.25);
-  --wx-bg:       linear-gradient(160deg, #2e2a1d 0%, #232832 50%, #161b22 100%);
+  --wx-accent:   #c1b082;
+  --wx-accent-2: #b5bfcb;
+  --wx-glow:     rgba(193, 176, 130, 0.14);
+  --wx-bg:       linear-gradient(160deg, #2b261a 0%, #1e1c15 50%, #161b22 100%);
 }
 
 .psc-weather-cloudy,
 .psc-weather-overcast {
-  --wx-accent:   #94a3b8;
-  --wx-accent-2: #cbd5e1;
-  --wx-glow:     rgba(148, 163, 184, 0.25);
-  --wx-bg:       linear-gradient(160deg, #2a313c 0%, #1e242d 55%, #161b22 100%);
+  --wx-accent:   #a5b2c5;
+  --wx-accent-2: #b7bec7;
+  --wx-glow:     rgba(165, 178, 197, 0.14);
+  --wx-bg:       linear-gradient(160deg, #23272c 0%, #1a1c1f 50%, #161b22 100%);
 }
 
 .psc-weather-rain,
 .psc-weather-drizzle {
-  --wx-accent:   #38bdf8;
-  --wx-accent-2: #7dd3fc;
-  --wx-glow:     rgba(56, 189, 248, 0.3);
-  --wx-bg:       linear-gradient(160deg, #0c2a3d 0%, #11202d 50%, #161b22 100%);
+  --wx-accent:   #80bad9;
+  --wx-accent-2: #9dc4d8;
+  --wx-glow:     rgba(128, 186, 217, 0.14);
+  --wx-bg:       linear-gradient(160deg, #192931 0%, #151d22 50%, #161b22 100%);
 }
 
 .psc-weather-storm,
 .psc-weather-thunderstorm {
-  --wx-accent:   #a78bfa;
-  --wx-accent-2: #facc15;
-  --wx-glow:     rgba(167, 139, 250, 0.35);
-  --wx-bg:       linear-gradient(160deg, #241a3d 0%, #1a1729 50%, #13161d 100%);
+  --wx-accent:   #b4a7e2;
+  --wx-accent-2: #cebc92;
+  --wx-glow:     rgba(180, 167, 226, 0.14);
+  --wx-bg:       linear-gradient(160deg, #272434 0%, #1c1a22 50%, #161b22 100%);
 }
 
 .psc-weather-snow,
 .psc-weather-sleet {
-  --wx-accent:   #e0f2fe;
-  --wx-accent-2: #bae6fd;
-  --wx-glow:     rgba(224, 242, 254, 0.3);
-  --wx-bg:       linear-gradient(160deg, #263445 0%, #1d2632 50%, #161b22 100%);
+  --wx-accent:   #90b8ca;
+  --wx-accent-2: #abc2ce;
+  --wx-glow:     rgba(144, 184, 202, 0.14);
+  --wx-bg:       linear-gradient(160deg, #1e282d 0%, #171d1f 50%, #161b22 100%);
 }
 
 .psc-weather-fog,
 .psc-weather-haze {
-  --wx-accent:   #a8b3c1;
-  --wx-accent-2: #d1d9e2;
-  --wx-glow:     rgba(168, 179, 193, 0.2);
-  --wx-bg:       linear-gradient(180deg, #2b3138 0%, #22272e 60%, #161b22 100%);
+  --wx-accent:   #a9b2be;
+  --wx-accent-2: #b8bec5;
+  --wx-glow:     rgba(169, 178, 190, 0.14);
+  --wx-bg:       linear-gradient(160deg, #24272a 0%, #1a1c1e 50%, #161b22 100%);
 }
 
 .psc-weather-wind {
-  --wx-accent:   #2dd4bf;
-  --wx-accent-2: #99f6e4;
-  --wx-glow:     rgba(45, 212, 191, 0.3);
-  --wx-bg:       linear-gradient(160deg, #0d2e2b 0%, #14222a 50%, #161b22 100%);
+  --wx-accent:   #7ec0b4;
+  --wx-accent-2: #9fc8bf;
+  --wx-glow:     rgba(126, 192, 180, 0.14);
+  --wx-bg:       linear-gradient(160deg, #192a27 0%, #151e1c 50%, #161b22 100%);
 }
 
 .psc-weather-hot {
-  --wx-accent:   #f97316;
-  --wx-accent-2: #fdba74;
-  --wx-glow:     rgba(249, 115, 22, 0.35);
-  --wx-bg:       linear-gradient(160deg, #3d1a0b 0%, #261711 50%, #161b22 100%);
+  --wx-accent:   #e0a07d;
+  --wx-accent-2: #d9b795;
+  --wx-glow:     rgba(224, 160, 125, 0.14);
+  --wx-bg:       linear-gradient(160deg, #332219 0%, #221a16 50%, #161b22 100%);
 }
 
 .psc-weather-cold,
 .psc-weather-freezing {
-  --wx-accent:   #60a5fa;
-  --wx-accent-2: #c7d2fe;
-  --wx-glow:     rgba(96, 165, 250, 0.3);
-  --wx-bg:       linear-gradient(160deg, #13234a 0%, #151d33 50%, #161b22 100%);
+  --wx-accent:   #8fb4e4;
+  --wx-accent-2: #b4bcdb;
+  --wx-glow:     rgba(143, 180, 228, 0.14);
+  --wx-bg:       linear-gradient(160deg, #1d2734 0%, #171c23 50%, #161b22 100%);
 }
 
 .psc-weather-night {
-  --wx-accent:   #818cf8;
-  --wx-accent-2: #c4b5fd;
-  --wx-glow:     rgba(129, 140, 248, 0.3);
-  --wx-bg:       linear-gradient(160deg, #141a3a 0%, #11152a 50%, #0d1117 100%);
+  --wx-accent:   #a4ade4;
+  --wx-accent-2: #bfb8dc;
+  --wx-glow:     rgba(164, 173, 228, 0.14);
+  --wx-bg:       linear-gradient(160deg, #232534 0%, #1a1b23 50%, #0d1117 100%);
 }
 
 .psc-weather-unknown {
-  --wx-accent:   var(--offline);
-  --wx-accent-2: #94a3b8;
-  --wx-glow:     rgba(100, 116, 139, 0.2);
-  --wx-bg:       linear-gradient(160deg, #1c232d 0%, #161b22 100%);
+  --wx-accent:   #a9b2be;
+  --wx-accent-2: #b8bec8;
+  --wx-glow:     rgba(169, 178, 190, 0.14);
+  --wx-bg:       linear-gradient(160deg, #24272a 0%, #1b1c1e 50%, #161b22 100%);
 }
 
 /* Weather-aware components */
