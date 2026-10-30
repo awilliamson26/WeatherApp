@@ -67,32 +67,13 @@ If you'd rather use different names, change the two arguments on line 1 of
 
 The secret lives in the gateway's configuration, not in this project, so it is never exported or committed.
 
-## 3. Set your location
+## 3. Create the tags and set the gateway's location
 
-The request URLs in `ignition/script-python/weather/code.py` contain placeholders. Replace
-**both** occurrences with your latitude and longitude in decimal degrees:
-
-```python
-fiveDayUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=YOUR_LAT&lon=YOUR_LON&appid={}&units=imperial'.format(apiKey)
-hourlyReportUrl = 'https://api.openweathermap.org/data/2.5/weather?lat=YOUR_LAT&lon=YOUR_LON&appid={}&units=imperial'.format(apiKey)
-```
-
-For example `lat=40.71&lon=-74.01`. To find your coordinates, right-click a spot in Google Maps and
-click the numbers at the top of the menu to copy them, or use OpenWeather's
-[Geocoding API](https://openweathermap.org/api/geocoding-api) with a city name.
-
-Two decimal places (about 1 km) is plenty for weather. Using fewer digits also avoids pinpointing
-your home if you publish your copy of the project.
-
-The dashboard expects `units=imperial` (°F, mph). The scripts convert pressure, visibility and
-precipitation themselves, so leave that parameter as it is.
-
-## 4. Create the tags
-
-The scripts write the API responses into two memory tags of type **Document** in the `[default]`
-tag provider. Tags are gateway configuration, so they aren't in this repo. Create them in the
-Designer's Tag Browser, or import this JSON with **Tag Browser → Import Tags** while
-`[default]` is selected:
+The scripts use four memory tags in the `[default]` tag provider. Tags are gateway configuration,
+so they aren't in this repo, and neither is your location. Create them in the Designer's Tag
+Browser, or import this JSON with **Tag Browser → Import Tags** while `[default]` is selected.
+**Replace the two `0.0` values with your gateway's latitude and longitude** first, or edit the
+tags afterwards:
 
 ```json
 {
@@ -100,15 +81,36 @@ Designer's Tag Browser, or import this JSON with **Tag Browser → Import Tags**
   "tagType": "Folder",
   "tags": [
     { "name": "hourlyWeather", "tagType": "AtomicTag", "valueSource": "memory", "dataType": "Document" },
-    { "name": "fiveDayReport", "tagType": "AtomicTag", "valueSource": "memory", "dataType": "Document" }
+    { "name": "fiveDayReport", "tagType": "AtomicTag", "valueSource": "memory", "dataType": "Document" },
+    { "name": "location", "tagType": "Folder", "tags": [
+      { "name": "latitude",  "tagType": "AtomicTag", "valueSource": "memory", "dataType": "Float8", "value": 0.0 },
+      { "name": "longitude", "tagType": "AtomicTag", "valueSource": "memory", "dataType": "Float8", "value": 0.0 }
+    ]}
   ]
 }
 ```
 
 | Tag | Holds |
 |---|---|
+| `[default]openWeather/location/latitude` | Gateway latitude, decimal degrees (-90 to 90) |
+| `[default]openWeather/location/longitude` | Gateway longitude, decimal degrees (-180 to 180) |
 | `[default]openWeather/hourlyWeather` | Current-weather response (Now tab) |
 | `[default]openWeather/fiveDayReport` | 5-day forecast response (5-Day tab) |
+
+To find your coordinates, right-click a spot in Google Maps and click the numbers at the top of
+the menu to copy them, or use OpenWeather's
+[Geocoding API](https://openweathermap.org/api/geocoding-api) with a city name. For example,
+latitude `40.71` and longitude `-74.01`. Two decimal places (about 1 km) is plenty for weather.
+
+The `weather` script reads the location tags on every fetch, so a change takes effect at the next
+scheduled update, or straight away if you save the project (saving reruns `onStartup`). If the tags
+are missing, bad quality, out of range, or still `0.0, 0.0`, the script **skips the API call** and
+logs a warning from the `weather` logger instead of fetching weather for the wrong place.
+
+## 4. Units
+
+The dashboard expects `units=imperial` (°F, mph), which is set in `weather/code.py`. The scripts
+convert pressure, visibility and precipitation themselves, so leave it as it is.
 
 ## 5. Install the project
 
@@ -130,7 +132,8 @@ Designer's Tag Browser, or import this JSON with **Tag Browser → Import Tags**
 - If the tags stay empty or the dashboard shows **No data**:
   - **HTTP 401 / invalid API key**: the key isn't active yet, or the secret's value is wrong.
   - **Secret not found**: check the provider (`Default`) and secret (`openWeather`) names.
-  - **400 / wrong place**: `YOUR_LAT` / `YOUR_LON` haven't been replaced, or are swapped.
+  - **"Location not set" / "out of range" warnings, or the wrong city**: check the
+    `openWeather/location` tags. They may still be `0.0`, or latitude and longitude may be swapped.
   - Look in the gateway logs (the Gateway web page's diagnostics/logs section, or `docker logs`
     for a container) for errors from the `weather` script.
   - The `weather.weatherReport()` helper returns the HTTP status code and the response body. If a
